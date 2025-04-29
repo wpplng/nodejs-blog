@@ -197,7 +197,7 @@ router.post('/register', async (req, res) => {
 
 /**
  * DELETE /
- * Admin - Register
+ * Admin - Delete post
  */
 router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
   try {
@@ -206,6 +206,16 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+/**
+ * GET /
+ * Admin - Logout
+ */
+router.get('/logout', async (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/');
+  // show message about successfull logout
 });
 
 module.exports = router;
